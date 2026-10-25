@@ -233,10 +233,21 @@ export function RetroEraQuiz() {
                           }}
                           className="p-3 border border-ink-black/10 hover:border-ink-black text-left transition-colors"
                         >
-                          <div
-                            className="w-full aspect-square mb-2 border border-ink-black/10"
-                            style={{ background: product.image }}
-                          />
+                          <div className="w-full aspect-square mb-2 border border-ink-black/10 overflow-hidden bg-aged-paper">
+                            {product.image.startsWith('http') ? (
+                              <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div
+                                className="w-full h-full"
+                                style={{ background: product.image }}
+                              />
+                            )}
+                          </div>
                           <span className="text-sm font-semibold truncate block">{product.name}</span>
                           <span className="font-mono text-xs">${product.price}</span>
                         </button>

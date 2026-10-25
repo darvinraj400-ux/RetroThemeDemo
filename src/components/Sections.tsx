@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Heart, ArrowUpRight, ArrowUp, Send } from 'lucide-react';
 import { useStore } from '../store';
-import { collections, journalArticles } from '../data';
+import { collections, journalArticles, interiorImage, printPaperImage } from '../data';
 
 // ==================== BRAND STORY ====================
 export function BrandStory() {
@@ -53,12 +53,14 @@ export function BrandStory() {
 
           {/* Visual */}
           <div className="relative">
-            <div className="aspect-[4/5] bg-olive/10 border-2 border-ink-black/10 relative overflow-hidden">
-              {/* Abstract composition */}
-              <div className="absolute inset-8 border-2 border-ink-black/10" />
-              <div className="absolute top-12 left-12 w-32 h-32 rounded-full bg-burnt-orange/20 border-2 border-burnt-orange/30" />
-              <div className="absolute bottom-16 right-12 w-24 h-24 bg-mustard/20 border-2 border-mustard/30 rotate-12" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-dusty-blue/15 border-2 border-dusty-blue/20" />
+            <div className="aspect-[4/5] border-2 border-ink-black/10 relative overflow-hidden">
+              <img
+                src={interiorImage}
+                alt="Warm retro-inspired interior with vintage objects"
+                className="w-full h-full object-cover"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-olive/5" />
               
               {/* Stamp */}
               <div className="absolute bottom-6 left-6 stamp">
@@ -114,12 +116,15 @@ export function FeatureBand() {
 
           {/* Visual composition */}
           <div className="hidden lg:block relative">
-            <div className="aspect-square max-w-sm mx-auto relative">
-              <div className="absolute inset-0 border-2 border-warm-cream/30" />
-              <div className="absolute top-8 left-8 right-8 bottom-8 border-2 border-warm-cream/20" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-mustard border-2 border-ink-black/20" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-warm-cream border-2 border-ink-black/20" />
-              <div className="absolute bottom-4 right-4 cat-number text-warm-cream/50">PP / 003</div>
+            <div className="aspect-square max-w-sm mx-auto relative border-2 border-warm-cream/30 overflow-hidden">
+              <img
+                src={printPaperImage}
+                alt="Print and paper collection"
+                className="w-full h-full object-cover"
+              />
+              {/* Overlay for color harmony */}
+              <div className="absolute inset-0 bg-burnt-orange/20 mix-blend-multiply" />
+              <div className="absolute bottom-4 right-4 cat-number text-warm-cream/80 bg-ink-black/40 px-2 py-1 backdrop-blur-sm">PP / 003</div>
             </div>
           </div>
         </div>
@@ -158,22 +163,40 @@ export function Collections() {
                 className="aspect-[3/4] relative overflow-hidden border-b-2 border-ink-black/10"
                 style={{ backgroundColor: collection.color + '15' }}
               >
+                {/* Use different images for different collections */}
+                {collection.id === 'home-objects' ? (
+                  <img
+                    src={interiorImage}
+                    alt={collection.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : collection.id === 'print-paper' ? (
+                  <img
+                    src={printPaperImage}
+                    alt={collection.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div
+                    className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+                    style={{
+                      background: `linear-gradient(135deg, ${collection.color}40 0%, ${collection.color}15 100%)`
+                    }}
+                  />
+                )}
+                {/* Overlay for color harmony */}
                 <div
-                  className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                  style={{
-                    background: `linear-gradient(135deg, ${collection.color}30 0%, ${collection.color}10 100%)`
-                  }}
+                  className="absolute inset-0 opacity-20"
+                  style={{ backgroundColor: collection.color }}
                 />
                 {/* Decorative elements */}
                 <div
                   className="absolute top-6 right-6 w-12 h-12 rounded-full border-2 opacity-30"
-                  style={{ borderColor: collection.color }}
+                  style={{ borderColor: '#fff' }}
                 />
-                <div
-                  className="absolute bottom-8 left-6 w-8 h-8 rotate-45 opacity-20"
-                  style={{ backgroundColor: collection.color }}
-                />
-                <div className="absolute top-4 left-4 cat-number" style={{ color: collection.color }}>
+                <div className="absolute top-4 left-4 cat-number text-warm-cream bg-ink-black/40 px-2 py-0.5 backdrop-blur-sm">
                   0{idx + 1}
                 </div>
               </div>
@@ -245,10 +268,19 @@ export function FavoritesView() {
               {favoriteProducts.map(product => (
                 <div key={product.id} className="bg-warm-cream border-2 border-ink-black/10 p-4">
                   <div className="flex gap-4">
-                    <div
-                      className="w-20 h-20 shrink-0 border border-ink-black/10"
-                      style={{ background: product.image }}
-                    />
+                    {product.image.startsWith('http') ? (
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-20 h-20 shrink-0 border border-ink-black/10 object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div
+                        className="w-20 h-20 shrink-0 border border-ink-black/10"
+                        style={{ background: product.image }}
+                      />
+                    )}
                     <div className="flex-1 min-w-0">
                       <span className="cat-number text-ink-black/40 block">{product.category}</span>
                       <h4 className="font-display text-base mb-1 truncate">{product.name}</h4>

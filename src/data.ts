@@ -45,26 +45,32 @@ export const categories = [
   'Collectibles',
 ];
 
+// Image URLs - using generated images for key products, CSS gradients for others
 const productImages: Record<string, string> = {
-  'sunset-lamp': 'linear-gradient(160deg, #F2E5C8 0%, #D5A832 30%, #C65C36 70%, #973F32 100%)',
+  'sunset-lamp': 'https://image.qwenlm.ai/generated-images/b181ab1a-ece1-4e87-8543-f4e88b1c39a0/_result.png',
   'archive-poster': 'linear-gradient(135deg, #F8F0DE 0%, #718A98 40%, #29251F 100%)',
-  'portable-radio': 'linear-gradient(145deg, #F2E5C8 0%, #626A43 40%, #D5A832 80%, #735440 100%)',
-  'orbit-clock': 'linear-gradient(135deg, #D5A832 0%, #C65C36 40%, #973F32 70%, #29251F 100%)',
-  'sunday-mug': 'linear-gradient(160deg, #F8F0DE 0%, #D7A4A0 40%, #D5A832 80%, #C65C36 100%)',
+  'portable-radio': 'https://image.qwenlm.ai/generated-images/163166c2-9edd-4e95-8f1e-e624f6e88ebe/_result.png',
+  'orbit-clock': 'https://image.qwenlm.ai/generated-images/decd5003-fc84-441b-ac50-3524e780b98d/_result.png',
+  'sunday-mug': 'https://image.qwenlm.ai/generated-images/c5e926cb-5720-4589-a309-3416473d277f/_result.png',
   'studio-notebook': 'linear-gradient(135deg, #F2E5C8 0%, #735440 60%, #29251F 100%)',
-  'vinyl-crate': 'linear-gradient(145deg, #D5A832 0%, #735440 40%, #29251F 80%, #626A43 100%)',
+  'vinyl-crate': 'https://image.qwenlm.ai/generated-images/8fa88bf0-7e11-4e12-b149-f1f12c684590/_result.png',
   'desk-organizer': 'linear-gradient(135deg, #F2E5C8 0%, #626A43 50%, #735440 100%)',
   'pendant-light': 'linear-gradient(180deg, #F8F0DE 0%, #D5A832 30%, #C65C36 70%, #29251F 100%)',
-  'ceramic-vase': 'linear-gradient(160deg, #F8F0DE 0%, #D7A4A0 30%, #718A98 60%, #626A43 100%)',
+  'ceramic-vase': 'https://image.qwenlm.ai/generated-images/870edf13-36ec-4220-bef7-d8e0568e259d/_result.png',
   'retro-camera': 'linear-gradient(135deg, #735440 0%, #29251F 50%, #626A43 100%)',
-  'screen-print': 'linear-gradient(135deg, #626A43 0%, #D5A832 35%, #973F32 65%, #C65C36 100%)',
-  'table-turntable': 'linear-gradient(145deg, #D5A832 0%, #735440 30%, #29251F 60%, #C65C36 100%)',
+  'screen-print': 'https://image.qwenlm.ai/generated-images/ed2732ba-31af-440a-8222-db95bb387ec9/_result.png',
+  'table-turntable': 'https://image.qwenlm.ai/generated-images/e967592b-e68b-4401-8917-ed2d20f3f9e4/_result.png',
   'enamel-bowl': 'linear-gradient(135deg, #F8F0DE 0%, #718A98 40%, #29251F 80%, #626A43 100%)',
   'field-bag': 'linear-gradient(145deg, #F2E5C8 0%, #626A43 35%, #735440 70%, #29251F 100%)',
   'table-lamp': 'linear-gradient(160deg, #D7A4A0 0%, #C65C36 40%, #D5A832 70%, #29251F 100%)',
-  'risograph-prints': 'linear-gradient(135deg, #D5A832 0%, #C65C36 30%, #718A98 60%, #626A43 100%)',
+  'risograph-prints': 'https://image.qwenlm.ai/generated-images/ed2732ba-31af-440a-8222-db95bb387ec9/_result.png',
   'wall-calendar': 'linear-gradient(145deg, #F2E5C8 0%, #973F32 35%, #C65C36 65%, #29251F 100%)',
 };
+
+// Hero and collection images
+export const heroImage = 'https://image.qwenlm.ai/generated-images/8daf762b-7a12-46bc-90d6-a9ebc5a680d0/_result.png';
+export const interiorImage = 'https://image.qwenlm.ai/generated-images/ff4bf0ff-eac8-4992-9577-a5bd3f546fc7/_result.png';
+export const printPaperImage = 'https://image.qwenlm.ai/generated-images/ed2732ba-31af-440a-8222-db95bb387ec9/_result.png';
 
 export const products: Product[] = [
   {

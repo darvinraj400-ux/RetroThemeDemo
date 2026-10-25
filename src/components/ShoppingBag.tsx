@@ -69,10 +69,19 @@ export function ShoppingBagDrawer() {
               {state.cart.map(item => (
                 <div key={item.product.id} className="flex gap-4 p-3 bg-warm-cream border border-ink-black/10">
                   {/* Thumbnail */}
-                  <div
-                    className="w-16 h-16 shrink-0 border border-ink-black/10"
-                    style={{ background: item.product.image }}
-                  />
+                  {item.product.image.startsWith('http') ? (
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-16 h-16 shrink-0 border border-ink-black/10 object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div
+                      className="w-16 h-16 shrink-0 border border-ink-black/10"
+                      style={{ background: item.product.image }}
+                    />
+                  )}
                   {/* Details */}
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-sm truncate">{item.product.name}</h4>

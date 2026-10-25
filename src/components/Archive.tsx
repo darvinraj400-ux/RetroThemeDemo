@@ -159,13 +159,22 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       onClick={() => dispatch({ type: 'SET_SELECTED_PRODUCT', product })}
     >
       {/* Image area */}
-      <div className="relative aspect-[4/3] overflow-hidden border-b-2 border-ink-black/10">
-        <div
-          className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-          style={{ background: product.image }}
-        />
+      <div className="relative aspect-[4/3] overflow-hidden border-b-2 border-ink-black/10 bg-aged-paper">
+        {product.image.startsWith('http') ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
+            style={{ background: product.image }}
+          />
+        )}
         {/* Overlay pattern for depth */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
           backgroundImage: 'radial-gradient(circle, #29251F 1px, transparent 1px)',
           backgroundSize: '6px 6px'
         }} />
@@ -290,13 +299,21 @@ function ProductDetailModal() {
         <div className="grid md:grid-cols-2">
           {/* Image section */}
           <div className="relative">
-            <div className="aspect-square border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative overflow-hidden">
-              <div
-                className="w-full h-full"
-                style={{ background: images[currentImage] }}
-              />
+            <div className="aspect-square border-b-2 md:border-b-0 md:border-r-2 border-ink-black/10 relative overflow-hidden bg-aged-paper">
+              {images[currentImage].startsWith('http') ? (
+                <img
+                  src={images[currentImage]}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div
+                  className="w-full h-full"
+                  style={{ background: images[currentImage] }}
+                />
+              )}
               {/* Subtle overlay pattern */}
-              <div className="absolute inset-0 opacity-[0.02]" style={{
+              <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{
                 backgroundImage: 'radial-gradient(circle, #29251F 1px, transparent 1px)',
                 backgroundSize: '8px 8px'
               }} />

@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
-import { siteConfig } from '../data';
+import { siteConfig, heroImage } from '../data';
 
 export function Hero() {
   const scrollTo = (id: string) => {
@@ -79,59 +79,24 @@ export function Hero() {
           {/* Visual composition */}
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] max-w-md mx-auto">
-              {/* Main artwork panel */}
-              <div className="absolute inset-0 bg-burnt-orange border-2 border-ink-black rounded-sm overflow-hidden">
-                {/* Inner composition - retro objects illustration */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Background circles */}
-                  <div className="absolute w-56 h-56 lg:w-72 lg:h-72 rounded-full bg-mustard/30" />
-                  <div className="absolute w-40 h-40 lg:w-52 lg:h-52 rounded-full bg-mustard border-2 border-ink-black/10" />
-                  
-                  {/* Lamp shape */}
-                  <div className="absolute top-[15%] left-1/2 -translate-x-1/2">
-                    <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-warm-cream border-2 border-ink-black/20" />
-                    <div className="w-2 h-12 lg:h-16 bg-warm-cream/80 mx-auto border-x border-ink-black/10" />
-                    <div className="w-10 h-3 lg:w-12 bg-warm-cream/60 mx-auto border border-ink-black/10" />
-                  </div>
-                  
-                  {/* Radio shape */}
-                  <div className="absolute bottom-[25%] left-[15%]">
-                    <div className="w-20 h-14 lg:w-24 lg:h-16 bg-olive/80 border-2 border-ink-black/20 rounded-sm">
-                      <div className="flex items-center justify-center h-full gap-1">
-                        <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-full bg-warm-cream/40 border border-ink-black/10" />
-                        <div className="flex flex-col gap-0.5">
-                          <div className="w-4 h-0.5 bg-warm-cream/40" />
-                          <div className="w-4 h-0.5 bg-warm-cream/40" />
-                          <div className="w-4 h-0.5 bg-warm-cream/40" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Clock shape */}
-                  <div className="absolute bottom-[20%] right-[15%]">
-                    <div className="w-14 h-14 lg:w-18 lg:h-18 rounded-full bg-dusty-blue/60 border-2 border-ink-black/20 flex items-center justify-center">
-                      <div className="w-0.5 h-5 bg-ink-black/40 absolute" style={{transform: 'rotate(-30deg)'}} />
-                      <div className="w-0.5 h-4 bg-ink-black/40 absolute" style={{transform: 'rotate(60deg)'}} />
-                      <div className="w-1.5 h-1.5 rounded-full bg-ink-black/40" />
-                    </div>
-                  </div>
-
-                  {/* Central starburst */}
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-warm-cream starburst opacity-80" />
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute top-4 left-4 cat-number text-warm-cream/80">NO. 001</div>
-                <div className="absolute bottom-4 right-4 cat-number text-warm-cream/80">RETRO GOODS</div>
+              {/* Main artwork panel with real image */}
+              <div className="absolute inset-0 border-2 border-ink-black rounded-sm overflow-hidden bg-burnt-orange">
+                <img
+                  src={heroImage}
+                  alt="Curated collection of vintage-inspired objects"
+                  className="w-full h-full object-cover"
+                />
+                {/* Overlay for vintage feel */}
+                <div className="absolute inset-0 bg-burnt-orange/10 mix-blend-multiply" />
                 
-                {/* Lines */}
-                <div className="absolute top-0 left-1/4 w-[1px] h-full bg-ink-black/10" />
-                <div className="absolute top-0 left-2/4 w-[1px] h-full bg-ink-black/10" />
-                <div className="absolute top-0 left-3/4 w-[1px] h-full bg-ink-black/10" />
-                <div className="absolute top-1/4 left-0 w-full h-[1px] bg-ink-black/10" />
-                <div className="absolute top-2/4 left-0 w-full h-[1px] bg-ink-black/10" />
-                <div className="absolute top-3/4 left-0 w-full h-[1px] bg-ink-black/10" />
+                {/* Decorative elements */}
+                <div className="absolute top-4 left-4 cat-number text-warm-cream bg-ink-black/40 px-2 py-1 backdrop-blur-sm">NO. 001</div>
+                <div className="absolute bottom-4 right-4 cat-number text-warm-cream bg-ink-black/40 px-2 py-1 backdrop-blur-sm">RETRO GOODS</div>
+                
+                {/* Grid lines */}
+                <div className="absolute top-0 left-1/4 w-[1px] h-full bg-warm-cream/10" />
+                <div className="absolute top-0 left-2/4 w-[1px] h-full bg-warm-cream/10" />
+                <div className="absolute top-0 left-3/4 w-[1px] h-full bg-warm-cream/10" />
               </div>
 
               {/* Floating stamp */}
