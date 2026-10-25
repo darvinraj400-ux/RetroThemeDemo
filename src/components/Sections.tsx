@@ -178,6 +178,20 @@ export function Collections() {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
+                ) : collection.id === 'sound-culture' ? (
+                  <img
+                    src="https://image.qwenlm.ai/generated-images/163166c2-9edd-4e95-8f1e-e624f6e88ebe/_result.png"
+                    alt={collection.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : collection.id === 'everyday-classics' ? (
+                  <img
+                    src="https://image.qwenlm.ai/generated-images/c5e926cb-5720-4589-a309-3416473d277f/_result.png"
+                    alt={collection.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 ) : (
                   <div
                     className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
